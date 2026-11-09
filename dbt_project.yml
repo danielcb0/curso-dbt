@@ -40,7 +40,8 @@ models:
     # Las tablas transient de Snowflake no tienen Fail-safe y su Time Travel es
     # de 1 día como máximo. Para tablas de consumo preferimos tablas normales.
     +transient: false
-
+    +meta:
+      owner: ["core", "marketing", "product"]
     # --- Staging: casting y renaming, 1:1 con Bronze. Vistas: no ocupan
     #     almacenamiento y siempre reflejan Bronze.
     staging:

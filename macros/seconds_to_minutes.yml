@@ -1,0 +1,9 @@
+macros:
+  - name: seconds_to_minutes
+    arguments:
+      - name: column_name
+        type: column
+        description: "la columna"
+      - name: precision
+        type: integer
+        description: "precision para los minutos."

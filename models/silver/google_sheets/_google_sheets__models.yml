@@ -20,10 +20,10 @@ models:
             data_tests:
               - not_null
               - unique
-              # - dbt_utils.accepted_range:
-              #     arguments:
-              #       min_value: 0
-              #       inclusive: false
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 0
+                    inclusive: false
           - name: budget_month
             data_tests:
               - not_null
