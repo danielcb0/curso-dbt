@@ -40,8 +40,7 @@ models:
     # Las tablas transient de Snowflake no tienen Fail-safe y su Time Travel es
     # de 1 día como máximo. Para tablas de consumo preferimos tablas normales.
     +transient: false
-    +meta:
-      owner: ["core", "marketing", "product"]
+
     # --- Staging: casting y renaming, 1:1 con Bronze. Vistas: no ocupan
     #     almacenamiento y siempre reflejan Bronze.
     staging:
@@ -72,10 +71,16 @@ models:
         +schema: intermediate
       core:
         +schema: core
+        +meta:
+          owner: equipo-datos-core
       marketing:
         +schema: marketing
+        +meta:
+          owner: equipo-marketing-analytics
       product:
         +schema: product
+        +meta:
+          owner: equipo-producto
 
 # =============================================================================
 # Seeds
@@ -91,3 +96,14 @@ seeds:
         country_code: varchar(2)
         country_name: varchar(100)
         continent: varchar(50)
+
+# =============================================================================
+# Snapshots (día 5)
+# =============================================================================
+# Historial SCD2 en Silver. Nunca transient: un snapshot es la única copia de
+# la historia y no se puede reconstruir desde Bronze.
+snapshots:
+  curso_data_engineering:
+    +database: DEV_SILVER_DB
+    +schema: snapshots
+    +transient: false
