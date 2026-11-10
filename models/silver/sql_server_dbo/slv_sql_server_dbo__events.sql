@@ -38,7 +38,7 @@ deduplicated as (
         , event_type
         , order_id
         , product_id
-        , created_at_utc
+        , to_date(created_at_utc) as created_at_utc
         , date_load
     from events
     qualify row_number() over (partition by event_id order by date_load desc) = 1
