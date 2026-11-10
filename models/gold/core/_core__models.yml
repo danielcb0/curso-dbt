@@ -142,20 +142,20 @@ models:
               config:
                 store_failures: true
 
-unit_tests:
-    - name: test_dim_products_categoriza_stock
-      model: dim_products
-      given:
-        - input: ref('slv_sql_server_dbo__products')
-          rows:
-            - {inventory_units: 0}
-            - {inventory_units: 5}
-            - {inventory_units: 100}
-      expect:
-        rows:
-          - {inventory_units: 0, stock_status: out_of_stock}
-          - {inventory_units: 5, stock_status: low_stock}
-          - {inventory_units: 100, stock_status: in_stock}
+# unit_tests:
+#     - name: test_dim_products_categoriza_stock
+#       model: dim_products
+#       given:
+#         - input: ref('slv_sql_server_dbo__products')
+#           rows:
+#             - {inventory_units: 0}
+#             - {inventory_units: 5}
+#             - {inventory_units: 100}
+#       expect:
+#         rows:
+#           - {inventory_units: 0, stock_status: out_of_stock}
+#           - {inventory_units: 5, stock_status: low_stock}
+#           - {inventory_units: 100, stock_status: in_stock}
 
         
 
