@@ -28,3 +28,13 @@ selectors:
         - exclude:
             - method: resource_type
               value: snapshot
+  
+
+  - name: gold_PRODUCT
+    description: El mart de PRODUCT y todo lo que necesita para construirse.
+    definition:
+      method: fqn
+      value: agg_user_sessions
+      parents: true
+
+  
