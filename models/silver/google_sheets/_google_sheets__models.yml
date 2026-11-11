@@ -1,0 +1,36 @@
+
+
+models:
+  - name: google_sheets
+    
+    columns:
+          - name: budget_id
+            data_tests:
+              - not_null
+              - unique
+          - name: product_id
+            data_tests:
+              - not_null
+              - unique
+              - relationships:
+                  arguments: 
+                    to: ref('slv_sql_server_dbo__products')
+                    field: product_id
+          - name: quantity_budgeted
+            data_tests:
+              - not_null
+              - unique
+              - dbt_utils.accepted_range:
+                  arguments:
+                    min_value: 0
+                    inclusive: false
+          - name: budget_month
+            data_tests:
+              - not_null
+              - unique
+          - name: date_load
+            data_tests:
+              - not_null
+              - unique
+              
+              
