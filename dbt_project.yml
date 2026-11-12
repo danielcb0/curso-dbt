@@ -15,6 +15,34 @@ version: '1.0.0'
 profile: default
 
 
+models:
+  gold:
+    intermediate:
+      +access: private
+      int_orders__enriched:
+        +group: core
+      int_events__pivoted_by_session:
+        +group: product
+    core:
+      +group: core
+      +access: public
+      +grants:
+        select: ['REPORTING_ROLE']
+    marketing:
+      +group: marketing
+      +access: public
+      +grants:
+        select: ['REPORTING_ROLE']
+        
+      +group: product
+      +access: public
+      +grants:
+        select: ['REPORTING_ROLE']
+
+
+
+
+
 
 vars:
   low_stock_threshold: 10

@@ -6,7 +6,7 @@
 -- =============================================================================
 
 with users as (
-    select * from {{ ref('dim_users') }}
+    select * from {{ ref('dim_users', v=1) }}
 ),
 
 orders as (
@@ -16,6 +16,8 @@ orders as (
 order_items as (
     select * from {{ ref('fct_order_items') }}
 ),
+
+
 
 order_metrics as (
     select
